@@ -1,7 +1,19 @@
 {
-  "name": "template",
+  "name": "niam",
+  "author": "Alexander Daivs",
+  "description": "Name-Industry Authorization Library - website and documentation.",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "create-react-app",
+    "cra",
+    "react",
+    "api",
+    "authentication",
+    "service",
+    "website"
+  ],
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
