@@ -19,8 +19,8 @@ import TempNavigation from "./Components/Navigation/TempNavigation";
 
 // Pages
 import Landing from "./Pages/Landing";
-import About from "./Pages/About";
-import Contact from "./Pages/Contact";
+import GetStarted from "./Pages/GetStarted";
+import Register from "./Pages/Register";
 import Docs from "./Pages/Docs";
 import NotFound from "./Pages/NotFound";
 import Maintenance from "./Pages/Maintenance";
@@ -30,8 +30,8 @@ import ComingSoon from "./Pages/ComingSoon";
 // all routes to be children from this
 const ContainerSection = () => {
     return (
-        <div className="flex flex-grow flex-col bg-slate-100 p-2">
-            <div className="flex flex-grow flex-col bg-slate-50">
+        <div className="flex flex-grow flex-col bg-slate-100">
+            <div className="flex flex-grow flex-col">
                 <TempNavigation />
                 <span className="p-2 text-sm">
                     <Outlet />
@@ -54,18 +54,13 @@ const router = createBrowserRouter([
                 errorElement: <NotFound />
             },
             {
-                path: "/about",
-                element: <About />,
+                path: "/get-started",
+                element: <GetStarted />,
                 errorElement: <NotFound />
             },
             {
-                path: "/contact",
-                element: <Contact />,
-                errorElement: <NotFound />
-            },
-            {
-                path: "/signup",
-                element: <Contact />,
+                path: "/register",
+                element: <Register />,
                 errorElement: <NotFound />
             },
             {
