@@ -25,10 +25,59 @@ import Docs from "./Pages/Docs";
 import NotFound from "./Pages/NotFound";
 import Maintenance from "./Pages/Maintenance";
 import ComingSoon from "./Pages/ComingSoon";
+import Footer from "./Pages/Footer";
+
+const placeholderRoutes = [
+    {
+        path: "/",
+        element: <ComingSoon />,
+        errorElement: <NotFound />
+    }
+]
+
+const activeRoutes = [
+    {
+        path: "/",
+        element: <Landing />,
+        errorElement: <NotFound />
+    },
+    {
+        path: "/get-started",
+        element: <GetStarted />,
+        errorElement: <NotFound />
+    },
+    {
+        path: "/register",
+        element: <Register />,
+        errorElement: <NotFound />
+    },
+    {
+        path: "/docs",
+        element: <Docs />,
+        errorElement: <NotFound />
+    },
+    {
+        path: "/maintenance",
+        element: <Maintenance />,
+        errorElement: <NotFound />
+    }
+];
 
 // Parent route container
 // all routes to be children from this
 const ContainerSection = () => {
+    if (process.env.REACT_APP_SHOW_PLACEHOLDER === "true") {
+        return (
+            <div className="flex flex-grow flex-col bg-slate-100">
+                <div className="flex flex-grow flex-col bg-slate-500">
+                    <div className="flex flex-grow justify-center items-center bg-slate-100 p-2">
+                        <Outlet />
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        )
+    }
     return (
         <div className="flex flex-grow flex-col bg-slate-100">
             <div className="flex flex-grow flex-col">
@@ -37,6 +86,7 @@ const ContainerSection = () => {
                     <Outlet />
                 </span>
             </div>
+            <Footer />
         </div>
     )
 }
@@ -47,42 +97,11 @@ const router = createBrowserRouter([
         path: "/",
         element: <ContainerSection />,
         errorElement: <NotFound />,
-        children: [
-            {
-                path: "/",
-                element: <Landing />,
-                errorElement: <NotFound />
-            },
-            {
-                path: "/get-started",
-                element: <GetStarted />,
-                errorElement: <NotFound />
-            },
-            {
-                path: "/register",
-                element: <Register />,
-                errorElement: <NotFound />
-            },
-            {
-                path: "/docs",
-                element: <Docs />,
-                errorElement: <NotFound />
-            },
-            {
-                path: "/maintenance",
-                element: <Maintenance />,
-                errorElement: <NotFound />
-            },
-            {
-                path: "/coming-soon",
-                element: <ComingSoon />,
-                errorElement: <NotFound />
-            }
-        ]
-    }
-], {
-    basename: "/"
-});
+        children: (process.env.REACT_APP_SHOW_PLACEHOLDER) ? placeholderRoutes : activeRoutes,
+    }],
+    {
+        basename: "/"
+    });
 
 const ApplicationShell = () => {
     return (

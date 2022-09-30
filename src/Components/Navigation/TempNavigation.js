@@ -4,8 +4,8 @@ import { MenuIcon, BxLockAltIcon } from "../Icons";
 
 export default function TempNavigation() {
 
-    let defaultLinkStyle = "flex flex-row items-center text-xs text-slate-800 pl-2 pr-2 bg-slate-50"
-    let activeClassName = "flex flex-row items-center text-xs text-slate-50 pl-2 pr-2 bg-slate-600";
+    let defaultLinkStyle = "flex flex-row items-center text-sm text-slate-800 pl-2 pr-2 bg-slate-50"
+    let activeClassName = "flex flex-row items-center text-sm text-slate-50 pl-2 pr-2 bg-slate-600";
 
     return (
         <div className="flex flex-row bg-slate-50">

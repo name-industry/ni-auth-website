@@ -2,6 +2,6 @@ import React from "react";
 
 export default function ComingSoon() {
     return (
-        <div><p>ComingSoon</p></div>
+        <p className="text-xs text-slate-400">[ eventually assured ]</p>
     )
 }
