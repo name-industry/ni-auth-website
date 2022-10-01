@@ -27,6 +27,8 @@ import Maintenance from "./Pages/Maintenance";
 import ComingSoon from "./Pages/ComingSoon";
 import Footer from "./Pages/Footer";
 
+const showPlaceholderPages = process.env.REACT_APP_SHOW_PLACEHOLDER === "true" && process.env.NODE_ENV === "production";
+
 const placeholderRoutes = [
     {
         path: "/",
@@ -66,7 +68,7 @@ const activeRoutes = [
 // Parent route container
 // all routes to be children from this
 const ContainerSection = () => {
-    if (process.env.REACT_APP_SHOW_PLACEHOLDER === "true") {
+    if (showPlaceholderPages) {
         return (
             <div className="flex flex-grow flex-col bg-slate-100">
                 <div className="flex flex-grow flex-col bg-slate-500">
@@ -97,7 +99,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <ContainerSection />,
         errorElement: <NotFound />,
-        children: (process.env.REACT_APP_SHOW_PLACEHOLDER) ? placeholderRoutes : activeRoutes,
+        children: (showPlaceholderPages) ? placeholderRoutes : activeRoutes,
     }],
     {
         basename: "/"
