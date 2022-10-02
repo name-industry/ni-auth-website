@@ -1,0 +1,25 @@
+#form-pre-register label {
+    padding-left: 0.25rem;
+}
+
+#form-pre-register input[type=text], #form-pre-register input[type=password]  {
+    background-color: #FEFEFE;
+    padding: 0.25rem;
+    margin: 0.15rem;
+    border-bottom: 1px Solid #B5DEF1;
+}
+
+#form-pre-register input[type=checkbox]  {
+    align-self: start;
+    padding: 0.25rem;
+    margin: 0.15rem;
+}
+
+#form-pre-register input[type=submiter] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
