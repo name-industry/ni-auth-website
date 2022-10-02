@@ -20,6 +20,7 @@
 
 import React, { Suspense } from "react";
 import { createRoot } from 'react-dom/client';
+import { Provider } from "jotai";
 
 // @fontsource default support is 300, 400, 500, 600, 700, 800 ( w/Italics )
 // Include only required.
@@ -47,8 +48,10 @@ const container = document.getElementById('react-root');
 const root = createRoot(container);
 root.render(
     <React.StrictMode>
-        <Suspense fallback={<MasterPreloadComponent />}>
-            <ApplicationShell />
-        </Suspense>
+        <Provider> {/* initial suspense here for Jotai - makes Provider ready for Async */}
+            <Suspense fallback={<MasterPreloadComponent />}>
+                <ApplicationShell />
+            </Suspense>
+        </Provider>
     </React.StrictMode>
 );

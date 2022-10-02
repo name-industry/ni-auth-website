@@ -84,7 +84,7 @@ const ContainerSection = () => {
         <div className="flex flex-grow flex-col bg-slate-100">
             <div className="flex flex-grow flex-col">
                 <TempNavigation />
-                <span className="p-2 text-sm">
+                <span className="flex flex-col flex-grow p-2 text-sm">
                     <Outlet />
                 </span>
             </div>
