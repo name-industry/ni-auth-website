@@ -19,13 +19,44 @@
 </script>
 
 <body>
-  <rapi-doc spec-url="./reference/ni-auth.json" id="thedoc" theme="dark" render-style="read" schema-style="tree"
-    font-size="largest" show-method-in-nav-bar="true" use-path-in-nav-bar="true" show-components="true" show-info="true"
-    show-header="true" allow-search="false" allow-advanced-search="true" allow-spec-url-load="false"
-    allow-spec-file-download="true" allow-server-selection="true" allow-authentication="true" update-route="false"
-    match-type="regex" persist-auth="true">
-
-  </rapi-doc>
+  
+  <rapi-doc 
+      spec-url="./reference/ni-auth.json" 
+      id="thedoc" 
+      theme="light" 
+      render-style="read" 
+      schema-style="table" 
+      font-size="default"
+      load-fonts="true"
+      regular-font='"Open Sans", Avenir, "Segoe UI", Arial, sans-serif' 
+      show-header="false"
+      show-method-in-nav-bar="false" 
+      use-path-in-nav-bar="false" 
+      show-components="true"\
+      heading-text="NI-Auth"
+      show-info="true"
+      sort-tags="true"
+      info-description-headings-in-navbar="true"
+      sort-endpoints-by="path"
+      api-list-style="group-by-path"
+      bg-color="#f0f0f0"
+      text-color="#626262"
+      nav-bg-color="#3e4b54"
+      nav-text-color="#a9b7d0"
+      nav-hover-bg-color="#333f54"
+      nav-hover-text-color="#ffffff"
+      nav-accent-color="#fd6964"
+      primary-color="#ea526f"
+      show-header="true" 
+      allow-search="true" 
+      allow-advanced-search="true" 
+      allow-spec-url-load="false"
+      allow-server-selection="true" 
+      allow-authentication="true" 
+      update-route="false" 
+      match-type="regex" 
+      persist-auth="true">
+    </rapi-doc>
 
   <script defer="defer">document.addEventListener('DOMContentLoaded', (event) => {
       let docEl = document.getElementById("thedoc");
