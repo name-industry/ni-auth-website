@@ -1,0 +1,321 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "ya2881j78sugj"
+  },
+  "info": {
+    "title": "ni-auth",
+    "version": "1.0",
+    "summary": "API for multi-tenant authentication and authorization with PKCE and JSON tokens. Hybrid Rest/RPC style architecture. ",
+    "description": "API for multi-tenant authentication and authorization with PKCE and JSON tokens. Hybrid Rest/RPC style architecture. ",
+    "contact": {
+      "name": "Alexander Davis",
+      "url": "Https://name-industry.com ",
+      "email": "nameindustry@gmail.com"
+    },
+    "termsOfService": "Https://auth.name-industry.com/terms"
+  },
+  "servers": [
+    {
+      "url": "https://name-industry.com/interface",
+      "description": "Live Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Client",
+      "description": "View and register clients"
+    },
+    {
+      "name": "Nonce",
+      "description": "Create a Nonce"
+    }
+  ],
+  "paths": {
+    "/client": {
+      "get": {
+        "summary": "Get client collection",
+        "tags": [
+          "Client"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "clientId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "meta": {
+                        "version": "0.9.0",
+                        "description": "Client EP"
+                      },
+                      "success": true,
+                      "message": "Current Client",
+                      "data": {
+                        "clientId": ""
+                      }
+                    }
+                  }
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "operationId": "get-client-collection",
+        "description": "depending on application id doing the request and the scopes allowed in the JSON accsess token, returns a collection of client objects."
+      },
+      "post": {
+        "summary": "Create a client",
+        "tags": [
+          "Client"
+        ],
+        "operationId": "create-client",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "clientId": {
+                          "type": "string"
+                        },
+                        "isActive": {
+                          "type": "boolean"
+                        },
+                        "registrationDate": {
+                          "type": "string"
+                        },
+                        "clientName": {
+                          "type": "string"
+                        },
+                        "clientDescription": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "meta": {
+                        "version": "0.9.0",
+                        "description": "Client EP"
+                      },
+                      "success": true,
+                      "message": "New client created",
+                      "data": {
+                        "clientId": "rtCtM0RHd6QBQkVML1RNQUsX",
+                        "isActive": false,
+                        "registrationDate": "2022-09-14 02:52:09",
+                        "clientName": "Some-name",
+                        "clientDescription": "whats this i see."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Register a new client id that can use the NI_Auth system. Without this Id nothing has accsess to the API.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "name": "Some-name",
+                    "description": "whats this i see."
+                  }
+                }
+              }
+            }
+          },
+          "description": "Creating a new registered client id requires a human readable name for frontend UI and also a descrtiption - these two values are used for exposing front end lists and searches."
+        }
+      }
+    },
+    "/nonce": {
+      "post": {
+        "summary": "Create a Nonce",
+        "tags": [
+          "Nonce"
+        ],
+        "operationId": "create-a-Nonce",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "nonce": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "meta": {
+                        "version": "0.9.0",
+                        "description": "Nonce EP"
+                      },
+                      "success": true,
+                      "message": "Nonce generated",
+                      "data": {
+                        "nonce": "-3N4voU0-NCa"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a Nonce for a specific client and a path thats available to it.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "clientId": "applicationORtenantid",
+                    "path": "/"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ClientModel": {
+        "title": "ClientModel",
+        "x-stoplight": {
+          "id": "fdkfa2oeu53vs"
+        },
+        "type": "object",
+        "description": "In the NI-Auth system, a client represents anything that can use the NI-Auth api - an application or a module. It is used on every call to allow authorization and scopes to be tied to an app/module as well as users in a system. An example is having A/B testing of a feature.",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "string"
+          },
+          "registrationDate": {
+            "type": "string"
+          },
+          "": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

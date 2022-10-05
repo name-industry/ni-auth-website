@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
+  <title>RapiDoc</title>
+  <link href="./highlight.default.min.css" rel="stylesheet">
+  <script src="./highlight.min.js"></script>
+  <script defer="defer" src="./rapidoc-min.js"></script>
+</head>
+
+<script defer="defer">window.addEventListener('DOMContentLoaded', (event) => {
+    const docEl = document.getElementById('thedoc');
+    docEl.addEventListener('before-try', (e) => {
+      e.detail.request.headers.append('AAA-BBB', 'CCC DDDD');
+    });
+  });
+</script>
+
+<body>
+  
+  <rapi-doc 
+      spec-url="./reference/ni-auth.json" 
+      id="thedoc" 
+      theme="light" 
+      render-style="read" 
+      schema-style="table" 
+      font-size="default"
+      load-fonts="true"
+      regular-font='"Open Sans", Avenir, "Segoe UI", Arial, sans-serif' 
+      show-header="false"
+      show-method-in-nav-bar="false" 
+      use-path-in-nav-bar="false" 
+      show-components="true"\
+      heading-text="NI-Auth"
+      show-info="true"
+      sort-tags="true"
+      info-description-headings-in-navbar="true"
+      sort-endpoints-by="path"
+      api-list-style="group-by-path"
+      bg-color="#f0f0f0"
+      text-color="#626262"
+      nav-bg-color="#3e4b54"
+      nav-text-color="#a9b7d0"
+      nav-hover-bg-color="#333f54"
+      nav-hover-text-color="#ffffff"
+      nav-accent-color="#fd6964"
+      primary-color="#ea526f"
+      show-header="true" 
+      allow-search="true" 
+      allow-advanced-search="true" 
+      allow-spec-url-load="false"
+      allow-server-selection="true" 
+      allow-authentication="true" 
+      update-route="false" 
+      match-type="regex" 
+      persist-auth="true">
+    </rapi-doc>
+
+  <script defer="defer">document.addEventListener('DOMContentLoaded', (event) => {
+      let docEl = document.getElementById("thedoc");
+
+      // 2. before-try (Aborts all post calls)
+      docEl.addEventListener('before-try', (e) => {
+        if (e.detail.request.method === 'POST') {
+          e.detail.controller.abort();
+        }
+      });
+
+    })
+  </script>
+</body>
+
+</html>
