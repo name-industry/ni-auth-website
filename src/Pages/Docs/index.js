@@ -15,7 +15,10 @@ const NotAuthenticated = () => {
 const DocViewer = () => {
     const docsViewerPath = process.env.PUBLIC_URL + "/docs-viewer/index.html";
     return (
-        <div className="flex flex-grow relative w-full h-full overflow-hidden">
+        <div className="flex flex-col flex-grow relative w-full h-full overflow-hidden">
+            <div className="flex justify-center items-center h-12 relative bg-slate-400">
+                <p className="text-sm">sub navigation</p>
+            </div>
             <div className="flex flex-grow relative">
                 <iframe
                     className="absolute overflow-hidden w-full h-full border-0 top-0 left-0"
